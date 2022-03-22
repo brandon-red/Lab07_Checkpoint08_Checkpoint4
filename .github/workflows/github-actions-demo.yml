@@ -1,5 +1,6 @@
 name: GitHub Actions Demo
 on: [push]
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -15,15 +16,20 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  
+
+jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+
     - name: Configure CMake
-      run: cmake ${{ github.workspace}}/Step5_build ${{ github.workspace}}/Step5
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
     - name: Build
-      run: cmake --build .
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
     - name: Test
-      working-directory: ${{ github.workspace}}/Step5_build
-      run: ctest -VV
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C ${{env.BUILD_TYPE}} -VV
