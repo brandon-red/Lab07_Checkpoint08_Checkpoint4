@@ -14,8 +14,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Run build
-        run: cmake --build Step5_build
-      - name: Run Tutorial tests
-        run: ctest --test-dir Step5_build -VV
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build
+      run: cmake --build ${{github.workspace}}/Step5_build
+    - name: Test
+      working-directory: ${{github.workspace}}/Step5_build
+      run: ctest -VV
