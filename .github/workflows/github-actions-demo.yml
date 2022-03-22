@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build ${{github.workspace}}/Step5
+      run: cmake -B ${{github.workspace}}/Step5_build ${{github.workspace}}/Step5
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build
