@@ -14,5 +14,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+          cd Step5_build
           ctest -VV
       - run: echo "🍏 This job's status is ${{ job.status }}."
