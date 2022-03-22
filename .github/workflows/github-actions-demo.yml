@@ -24,11 +24,11 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build ${{github.workspace}}/Step5_build
+      run: cmake -B ${{github.workspace}}/build ${{github.workspace}}/Step5
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build .
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: ctest -C ${{env.BUILD_TYPE}} -VV
+      run: ctest -VV
