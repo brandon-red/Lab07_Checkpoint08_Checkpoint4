@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Configure CMake
-      run: cmake /Step5_build /Step5
+      run: cmake ${{ github.workspace}}/../Step5_build ${{ github.workspace}}/../Step5
     - name: Build
       run: cmake --build .
     - name: Test
-      working-directory: /Step5_build
+      working-directory: ${{ github.workspace}}/../Step5_build
       run: ctest -VV
