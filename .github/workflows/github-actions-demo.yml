@@ -19,6 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Configure CMake
+      run: cmake ${{github.workspace}}/Step5_build ${{github.workspace}}/Step5
     - name: Build
       run: cmake --build ${{github.workspace}}/Step5_build
     - name: Test
